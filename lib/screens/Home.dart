@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(
+            //Header Text
             padding: const EdgeInsets.all(10.0),
             child: Container(
               alignment: Alignment.topLeft,
@@ -43,12 +44,13 @@ class _HomeState extends State<Home> {
             ),
           ),
           Container(
+            //Header Underline
             height: 1.0,
             width: MediaQuery.of(context).size.width * 1,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black,
+                  color: Palette.headerTextColor,
                   offset: Offset(
                     0,
                     2.0,
