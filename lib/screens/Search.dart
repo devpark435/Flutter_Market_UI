@@ -77,6 +77,7 @@ class _SearchState extends State<Search> {
                         child: TabBar(
                           labelColor: Palette.tabTextColor,
                           unselectedLabelColor: Palette.tabTextColor,
+                          indicatorColor: Palette.categoryShadowColor,
                           tabs: [
                             Tab(text: 'Tab 1'),
                             Tab(text: 'Tab 2'),
