@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/Home.dart';
 import 'screens/Search.dart';
+import 'screens/Login.dart';
+import 'assets/Palette.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,11 +37,7 @@ class _appBarState extends State<appBar> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
-  final List<Widget> _widgetOptions = <Widget>[
-    Home(),
-    Search()
-    // LoginPage(title: "title")
-  ];
+  final List<Widget> _widgetOptions = <Widget>[Home(), Search(), Login()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -86,3 +84,35 @@ class _appBarState extends State<appBar> {
     super.dispose();
   }
 }
+
+// Widget LoginContainer(text) {
+//   return Container(
+//     width: 300,
+//     height: 80,
+//     alignment: Alignment.center,
+//     margin: EdgeInsets.all(10),
+//     decoration: BoxDecoration(
+//       color: Palette.mainBgColor,
+//       borderRadius: BorderRadius.circular(25),
+//       boxShadow: [
+//         BoxShadow(
+//           color: Palette.categoryShadowColor,
+//           offset: Offset(
+//             0,
+//             2.0,
+//           ),
+//           blurRadius: 2.0,
+//         )
+//       ],
+//     ),
+//     child: Padding(
+//       padding: const EdgeInsets.all(10.0),
+//       child: TextField(
+//         decoration: InputDecoration(
+//             border: InputBorder.none,
+//             hintText: text,
+//             hintStyle: Styles.hintText),
+//       ),
+//     ),
+//   );
+// }
