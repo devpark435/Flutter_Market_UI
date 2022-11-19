@@ -96,32 +96,28 @@ class _SearchState extends State<Search> {
                                 scrollDirection: Axis.vertical,
                                 itemCount: items.length,
                                 itemBuilder: ((context, index) {
-                                  return Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      SizedBox(
-                                        height: 100,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.9,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  width: 1,
-                                                  color: Palette
-                                                      .categoryShadowColor),
-                                              borderRadius:
-                                                  BorderRadius.circular(25)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(items[index]),
+                                  return Dismissible(
+                                      key: Key(items[index]),
+                                      child: Card(
+                                        surfaceTintColor: Colors.white,
+                                        elevation: 5,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: ListTile(
+                                          title: Text(items[index]),
+                                          trailing: IconButton(
+                                            icon: Icon(Icons.delete),
+                                            color: Color.fromARGB(
+                                                182, 160, 114, 225),
+                                            onPressed: () {
+                                              setState(() {
+                                                items.removeAt(index);
+                                              });
+                                            },
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  );
+                                      ));
                                 })),
                           ),
                           Container(
