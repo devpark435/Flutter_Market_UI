@@ -5,6 +5,7 @@ import 'package:flutter_maket_ui/main.dart';
 import 'Search.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../assets/Palette.dart';
+import 'categorys/Shoes.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -111,12 +112,10 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GestureDetector(
-                      child: iconContainer(Colors.white, 'ctg1'),
+                      child: iconContainer(Colors.white, 'Shoes'),
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => Search())));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: ((context) => Shoes())));
                       },
                     ),
                     GestureDetector(
