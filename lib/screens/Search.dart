@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import '../Assets/Palette.dart';
@@ -66,72 +67,78 @@ class _SearchState extends State<Search> {
                 ],
               ),
             ),
-            DefaultTabController(
-                length: 4, // length of tabs
-                initialIndex: 0,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        child: TabBar(
-                          labelColor: Palette.tabTextColor,
-                          unselectedLabelColor: Palette.tabTextColor,
-                          indicatorColor: Palette.categoryShadowColor,
-                          tabs: [
-                            Tab(text: 'ctg 1'),
-                            Tab(text: 'ctg 2'),
-                            Tab(text: 'ctg 3'),
-                            Tab(text: 'ctg 4'),
-                          ],
+            Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: DefaultTabController(
+                  length: 4, // length of tabs
+                  initialIndex: 0,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          child: TabBar(
+                            labelColor: Palette.tabTextColor,
+                            unselectedLabelColor: Palette.tabTextColor,
+                            indicatorColor: Palette.categoryShadowColor,
+                            tabs: [
+                              Tab(text: 'ctg 1'),
+                              Tab(text: 'ctg 2'),
+                              Tab(text: 'ctg 3'),
+                              Tab(text: 'ctg 4'),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 500,
-                        child: TabBarView(children: [
-                          Container(
-                            height: 500,
-                            width: MediaQuery.of(context).size.width * 0.9,
-                            child: ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                itemCount: items.length,
-                                itemBuilder: ((context, index) {
-                                  return Dismissible(
-                                      key: Key(items[index]),
-                                      child: Card(
-                                        surfaceTintColor: Colors.white,
-                                        elevation: 5,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child: ListTile(
-                                          title: Text(items[index]),
-                                          trailing: IconButton(
-                                            icon: Icon(Icons.delete),
-                                            color: Color.fromARGB(
-                                                182, 160, 114, 225),
-                                            onPressed: () {
-                                              setState(() {
-                                                items.removeAt(index);
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ));
-                                })),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Container(
+                            height: 550,
+                            child: TabBarView(children: [
+                              Container(
+                                height: 700,
+                                width: MediaQuery.of(context).size.width * 0.9,
+                                child: ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: items.length,
+                                    itemBuilder: ((context, index) {
+                                      return Dismissible(
+                                          key: Key(items[index]),
+                                          child: Card(
+                                            surfaceTintColor: Colors.white,
+                                            elevation: 5,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15)),
+                                            child: ListTile(
+                                              title: Text(items[index]),
+                                              trailing: IconButton(
+                                                icon: Icon(Icons.delete),
+                                                color: Color.fromARGB(
+                                                    182, 160, 114, 225),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    items.removeAt(index);
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ));
+                                    })),
+                              ),
+                              Container(
+                                child: Text('tab2'),
+                              ),
+                              Container(
+                                child: Text('tab3'),
+                              ),
+                              Container(
+                                child: Text('tab4'),
+                              )
+                            ]),
                           ),
-                          Container(
-                            child: Text('tab2'),
-                          ),
-                          Container(
-                            child: Text('tab3'),
-                          ),
-                          Container(
-                            child: Text('tab4'),
-                          )
-                        ]),
-                      )
-                    ])),
+                        )
+                      ])),
+            ),
           ],
         ),
       ),
